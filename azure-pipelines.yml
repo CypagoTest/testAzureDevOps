@@ -1,28 +1,7 @@
-trigger:
-- master
-
-pool:
-  vmImage: 'windows-latest'
-
-stages:
-- stage: Restore_NuGet_Stage
-  displayName: 'Restore NuGet Stage'
-  jobs:
-  - job: restore_nuget
-    displayName: 'Restore NuGet'
-    steps:
-    - task: NuGetCommand@2
-      inputs:
-        command: restore
-- stage: Build_Stage
-  displayName: 'Build Stage'
-  jobs: 
-  - job: compile_cs
-    displayName: 'Compile CS Files'
-    steps:
-    - task: DotNetCoreCLI@2
-      displayName: 'Build Task'
-      inputs:
-        command: build
-        projects: 'Helloworld.csproj'
-        arguments: '--configuration Testing'
+jobs:
+- job: Linux
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - script: npm install
+  - script: npm test
