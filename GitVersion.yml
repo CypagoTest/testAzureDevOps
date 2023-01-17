@@ -1,5 +1,5 @@
 mode: Mainline
-branches: {}
+branches: {dev}
 ignore:
   sha: []
 merge-message-formats: {}
